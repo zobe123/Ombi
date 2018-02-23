@@ -50,7 +50,7 @@ namespace Ombi.Schedule.Jobs.Ombi
         private static PerformContext Ctx { get; set; }
         private readonly IRepository<ApplicationConfiguration> _appConfig;
 
-        public string[] GetVersion()
+        public static string[] GetVersion()
         {
             var productVersion = AssemblyHelper.GetRuntimeVersion();
             var productArray = productVersion.Split('-');

@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
+import { IUpdateViewModel } from "../../interfaces";
 import { NotificationService } from "../../services";
-import { JobService, SettingsService } from "../../services";
+import { JobService, SettingsService, UpdateService } from "../../services";
 
 @Component({
     templateUrl: "./update.component.html",
@@ -17,10 +18,12 @@ export class UpdateComponent implements OnInit {
         const control = this.form.get("useScript");
         return control!.value!;
     }
+    public model: IUpdateViewModel;
 
     constructor(private settingsService: SettingsService,
                 private notificationService: NotificationService,
-                private updateService: JobService,
+                private jobService: JobService,
+                private updateService: UpdateService,
                 private fb: FormBuilder) { }
 
     public ngOnInit() {
@@ -39,21 +42,12 @@ export class UpdateComponent implements OnInit {
                 this.isWindows = x.isWindows;
                 this.enableUpdateButton = x.autoUpdateEnabled;
             });
-    }
 
-    public checkForUpdate() {
-        this.updateService.checkForNewUpdate().subscribe(x => {
-            if (x === true) {
-                this.updateAvailable = true;
-                this.notificationService.success("There is a new update available");
-            } else {
-                this.notificationService.success("You are on the latest version!");
-            }
-        });
+        this.checkForUpdate();
     }
 
     public update() {
-        this.updateService.forceUpdate().subscribe();
+        this.jobService.forceUpdate().subscribe();
         this.notificationService.success("We triggered the update job");
     }
 
@@ -71,5 +65,17 @@ export class UpdateComponent implements OnInit {
                     this.notificationService.error("There was an error when saving the Update settings");
                 }
             });
+    }
+
+    private checkForUpdate() {
+        this.updateService.getUpdate().subscribe(x => {
+            this.model = x;
+            if (x.updateAvailable) {
+                this.updateAvailable = true;
+                this.notificationService.success("There is a new update available");
+            } else {
+                this.notificationService.success("You are on the latest version!");
+            }
+        });
     }
 }

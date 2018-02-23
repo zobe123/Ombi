@@ -8,9 +8,6 @@
             <div *ngIf="updateAvailable">
                 <button (click)="update()" [disabled]="!enableUpdateButton" class="btn btn-success-outline">Update</button>
             </div>
-            <div *ngIf="!updateAvailable">
-                <button (click)="checkForUpdate()" class="btn btn-primary-outline">Check For Update</button>
-            </div>
         </div>
         <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)" style="padding-top:5%;">
             <div class="col-md-6">

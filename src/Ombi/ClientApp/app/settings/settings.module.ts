@@ -1,4 +1,5 @@
-﻿import { CommonModule } from "@angular/common";
+﻿import { UpdateService } from './../services/update.service';
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
@@ -7,7 +8,7 @@ import { ClipboardModule } from "ngx-clipboard/dist";
 
 import { AuthGuard } from "../auth/auth.guard";
 import { AuthService } from "../auth/auth.service";
-import { CouchPotatoService, EmbyService, IssuesService, JobService, MobileService, PlexService, RadarrService, SonarrService, TesterService, ValidationService } from "../services";
+import { CouchPotatoService, EmbyService, IssuesService, JobService, MobileService, PlexService, RadarrService, SonarrService, TesterService, UpdateService, ValidationService } from "../services";
 
 import { PipeModule } from "../pipes/pipe.module";
 import { AboutComponent } from "./about/about.component";
@@ -131,6 +132,7 @@ const routes: Routes = [
         PlexService,
         EmbyService,
         MobileService,
+        UpdateService,
     ],
 
 })

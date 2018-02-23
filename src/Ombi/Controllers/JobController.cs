@@ -57,7 +57,7 @@ namespace Ombi.Controllers
         {
             try
             {
-                var productArray = _updater.GetVersion();
+                var productArray = OmbiAutomaticUpdater.GetVersion();
                 var version = productArray[0];
                 var branch = productArray[1];
                 var updateAvailable = await _updater.UpdateAvailable(branch, version);
@@ -76,7 +76,7 @@ namespace Ombi.Controllers
         {
             var val = await _memCache.GetOrAdd(CacheKeys.Update, async () =>
             {
-                var productArray = _updater.GetVersion();
+                var productArray = OmbiAutomaticUpdater.GetVersion();
                 var version = productArray[0];
                 var branch = productArray[1];
                 var updateAvailable = await _updater.UpdateAvailable(branch, version);

@@ -31,13 +31,8 @@ namespace Ombi.Schedule.Processor
         public async Task<UpdateModel> Process(string branch)
         {
             var masterBranch = branch.Equals("master", StringComparison.CurrentCultureIgnoreCase);
-            string githubChangeLog;
-
-            githubChangeLog = await _client.GetStringAsync(new Uri(ChangeLogUrl(branch)));
-
-
+            var githubChangeLog = await _client.GetStringAsync(new Uri(ChangeLogUrl(branch)));
             var html = Markdown.ToHtml(githubChangeLog);
-
 
             var doc = new HtmlDocument();
             doc.LoadHtml(html);

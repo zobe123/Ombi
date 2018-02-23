@@ -191,3 +191,21 @@ export interface IDogNzbSettings extends ISettings {
 export interface IIssueCategory extends ISettings {
   value: string;
 }
+
+export interface IUpdateViewModel {
+  updateVersionString: string;
+  updateVersion: number;
+  updateDate: Date;
+  installedVersion: string;
+  updateAvailable: boolean;
+}
+
+export interface IChangeLog {
+  type: string;
+  description: string;
+}
+
+export interface IDownloads {
+  name: string;
+  url: string;
+}
