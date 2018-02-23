@@ -7,5 +7,6 @@ namespace Ombi.Store.Entities
     {
         public int TheMovieDbId { get; set; }
         public bool HasFile { get; set; }
+        public bool Monitored { get; set; }
     }
 }

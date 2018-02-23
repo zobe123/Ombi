@@ -26,6 +26,7 @@ namespace Ombi.Store.Repository.Requests
         public bool Available { get; set; }
         public bool Approved { get; set; }
         public bool Requested { get; set; }
+        public bool Monitored { get; set; }
 
 
         public int SeasonId { get; set; }

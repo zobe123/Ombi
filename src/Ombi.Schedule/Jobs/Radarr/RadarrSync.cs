@@ -56,7 +56,8 @@ namespace Ombi.Schedule.Jobs.Radarr
                                     movieIds.Add(new RadarrCache
                                     {
                                         TheMovieDbId = m.tmdbId,
-                                        HasFile = m.hasFile
+                                        HasFile = m.hasFile,
+                                        Monitored = m.monitored
                                     });
                                 }
                                 else

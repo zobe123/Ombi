@@ -29,6 +29,10 @@ namespace Ombi.Core.Rule.Rules.Search
                     {
                         obj.Available = true;
                     }
+                    if (result.Monitored)
+                    {
+                        obj.Monitored = true;
+                    }
                 }
             }
             return Task.FromResult(Success());

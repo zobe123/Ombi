@@ -12,6 +12,7 @@ namespace Ombi.Core.Models.Search
         public string PlexUrl { get; set; }
         public string Quality { get; set; }
         public abstract RequestType Type { get; }
+        public bool Monitored { get; set; }
 
 
         /// <summary>

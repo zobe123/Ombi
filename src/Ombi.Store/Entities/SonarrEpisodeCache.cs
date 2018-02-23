@@ -9,5 +9,6 @@ namespace Ombi.Store.Entities
         public int EpisodeNumber { get; set; }
         public int TvDbId { get; set; }
         public bool HasFile { get; set; }
+        public bool Monitored { get; set; }
     }
 }

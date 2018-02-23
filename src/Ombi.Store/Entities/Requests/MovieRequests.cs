@@ -14,5 +14,6 @@ namespace Ombi.Store.Entities.Requests
 
         public int RootPathOverride { get; set; }
         public int QualityOverride { get; set; }
+        public bool Monitored { get; set; }
     }
 }

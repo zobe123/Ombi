@@ -21,7 +21,7 @@ namespace Ombi.Core.Rule.Rules
         {
             if (obj.RequestType == RequestType.TvShow)
             {
-                var vm = (ChildRequests) obj;
+                var vm = (ChildRequests)obj;
                 var result = await _ctx.SonarrCache.FirstOrDefaultAsync(x => x.TvDbId == vm.Id);
                 if (result != null)
                 {
@@ -38,7 +38,7 @@ namespace Ombi.Core.Rule.Rules
                                     && x.TvDbId == vm.Id);
                                 if (monitoredInSonarr)
                                 {
-                                    return new RuleResult{Message = "We already have this request, please choose the \"Select...\" option to refine your request"};
+                                    return new RuleResult { Message = "We already have this request, please choose the \"Select...\" option to refine your request" };
                                 }
                             }
                         }
@@ -52,7 +52,7 @@ namespace Ombi.Core.Rule.Rules
         {
             if (obj.Type == RequestType.TvShow)
             {
-                var vm = (SearchTvShowViewModel) obj;
+                var vm = (SearchTvShowViewModel)obj;
                 // Check if it's in Radarr
                 var result = await _ctx.SonarrCache.FirstOrDefaultAsync(x => x.TvDbId == vm.Id);
                 if (result != null)
@@ -76,6 +76,10 @@ namespace Ombi.Core.Rule.Rules
                                     if (monitoredInSonarr.HasFile)
                                     {
                                         obj.Available = true;
+                                    }
+                                    if (monitoredInSonarr.Monitored)
+                                    {
+                                        obj.Monitored = true;
                                     }
                                 }
                             }
